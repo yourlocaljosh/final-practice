@@ -34,7 +34,39 @@
 
 using namespace std;
 
+//O(N^2 + Q) average case and O(N^2) space
+//25 line limit
 void range_queries(const std::vector<unsigned int>& data,
                    const std::vector<Query>& queries) {
-  // TODO
+  // TODID
+  //End goal:
+  //O(1) access to how many times an element appears
+  //between a range
+
+  //Store how many times an element appears up to an ith range
+  //Unordered_map:
+  //First = integer
+  //Second = vector of size data, where each element in data is how many times
+  //the number appeared up to that index
+  //5,4,3,5,3,3,2,1,3
+  unordered_map<unsigned int, vector<unsigned int>> frequency;
+  size_t index = 0;
+  for(size_t i = 0; i < data.size(); ++i){
+    if(frequency[data[i]].empty()){
+      frequency[data[i]].resize(data.size());
+    }
+    index = data[i];
+    for(auto &j: frequency){
+      if(index==0){
+        j.second[index] = 0;
+      }else{
+        j.second[index] = j.second[index-1];
+      }
+    }
+    frequency[data[i]][index]++;
+    index++;
+  }
+  for(size_t i = 0; i < queries.size(); ++i){
+    cout << frequency[queries[i].id][queries[i].start - queries[i].end] << " ";
+  }
 }
