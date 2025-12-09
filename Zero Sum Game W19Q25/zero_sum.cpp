@@ -33,7 +33,22 @@
 
 using namespace std;
 
+//O(n) time and space
+//15 line limit
 bool zero_contiguous_sum(std::vector<int>& nums) {
-  // TODO
+  // TODID
+  unordered_set<int> sums;
+  //Compute the sums, add it to a set
+  //If a sum is 0 or equal to a previous sum, we have a zero
+  //Otherwise return false
+  int sum = 0;
+  sums.insert(sum);
+  for(size_t i = 0; i < nums.size(); ++i){
+    sum+=nums[i];
+    if(sums.find(sum)!=sums.end()){
+      return true;
+    }
+    sums.insert(sum);
+  }
   return false;
 }
