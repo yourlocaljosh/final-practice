@@ -33,7 +33,21 @@
 
 using namespace std;
 
+//O(log n) complexity with O(log n) space
+//15 line limit
 bool exists(Node *node, int val) {
-  // TODO
-  return false; 
+  if(node==nullptr){
+    return false;
+  }else if(node->val == val){
+    return true;
+  }
+  bool lefty = false;
+  bool righty = false;
+  if(node->val > val){
+    lefty = exists(node->right,val);
+  }
+  if(node->val < val){
+    righty = exists(node->left,val);
+  }
+  return lefty || righty;
 }
