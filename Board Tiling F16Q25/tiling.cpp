@@ -33,8 +33,19 @@
 
 using namespace std;
 
+//O(n) time with O(n) auxiliary space
+//12 lines of code limit
 int number_of_tilings(int n) {
-  // n is guaranteed to be > 0
-  assert (n > 0);
-  return 0;
+  vector<int> dp(n+1,0);
+  if(n>1){
+    dp[1] = 1;
+  }
+  if(n>2){
+    dp[2] = 3;
+  }
+  for(size_t i = 3; i < dp.size(); ++i){
+    //Dynampic Programming
+    dp[i] = dp[i-1] + (2*dp[i-2]);
+  }
+  return dp[dp.size()-1];
 }
