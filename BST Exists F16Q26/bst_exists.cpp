@@ -41,13 +41,9 @@ bool exists(Node *node, int val) {
   }else if(node->val == val){
     return true;
   }
-  bool lefty = false;
-  bool righty = false;
   if(node->val > val){
-    lefty = exists(node->right,val);
+    return exists(node->left,val);
+  }else{
+    return exists(node->right,val);
   }
-  if(node->val < val){
-    righty = exists(node->left,val);
-  }
-  return lefty || righty;
 }
