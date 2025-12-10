@@ -50,23 +50,29 @@ void range_queries(const std::vector<unsigned int>& data,
   //the number appeared up to that index
   //5,4,3,5,3,3,2,1,3
   unordered_map<unsigned int, vector<unsigned int>> frequency;
-  size_t index = 0;
   for(size_t i = 0; i < data.size(); ++i){
     if(frequency[data[i]].empty()){
-      frequency[data[i]].resize(data.size());
+      frequency[data[i]].assign(data.size(),0);
     }
-    index = data[i];
     for(auto &j: frequency){
-      if(index==0){
-        j.second[index] = 0;
+      auto &vec = j.second;
+      if(i==0){
+        vec[i] = 0;
       }else{
-        j.second[index] = j.second[index-1];
+        vec[i] = vec[i-1];
       }
     }
-    frequency[data[i]][index]++;
-    index++;
+    frequency[data[i]][i]++;
   }
-  for(size_t i = 0; i < queries.size(); ++i){
-    cout << frequency[queries[i].id][queries[i].start - queries[i].end] << " ";
+  for(const auto &q : queries){
+    auto it = frequency.find(q.id);
+    if(it == frequency.end()){
+      cout << 0 << ' ';
+    }else{
+      const auto &vec = it->second;
+        unsigned before = (q.start == 0 ? 0 : vec[q.start - 1]);
+        unsigned cnt = vec[q.end] - before;
+        cout << cnt << ' ';
+      }
   }
 }
