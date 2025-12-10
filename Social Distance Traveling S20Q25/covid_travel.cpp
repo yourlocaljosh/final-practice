@@ -36,4 +36,5 @@ using namespace std;
 int covid_travel(std::vector<std::vector<int>>& grid) {
   // TODO
   return 0;
+  //The exam is tomorrow, I don't have time to do this unfortunately
 }

@@ -38,4 +38,5 @@ vector<string> roteq_subset(const vector<string>& strs) {
   // TODO
   assert(false);
   return vector<string>();
+  //The exam is tomorrow, I don't have time to do this unfortunately
 }

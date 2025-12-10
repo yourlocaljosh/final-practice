@@ -37,4 +37,5 @@ using namespace std;
 int min_combine_cost(const vector<vector<int>> &binders) {
   // TODO
   return 0;
+  //The exam is tomorrow, I don't have time to do this unfortunately
 }

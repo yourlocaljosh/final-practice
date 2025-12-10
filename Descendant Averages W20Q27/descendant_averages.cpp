@@ -37,4 +37,5 @@ vector<double> query_descendant_averages(Node *root,
                                          const vector<int>& indices) {
   // TODO
   return vector<double>{};
+  //The exam is tomorrow, I don't have time to do this unfortunately
 }

@@ -37,4 +37,5 @@ using namespace std;
 int hire_heroes(const vector<int> &experience, const vector<vector<int>> &partners, int k) {
   // TODO
   return 0;
+  //The exam is tomorrow, I don't have time to do this unfortunately
 }
