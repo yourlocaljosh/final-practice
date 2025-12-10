@@ -33,7 +33,16 @@
 
 using namespace std;
 
+//O(mn) time and space
+//30 line limit
 int get_max_nuts(std::vector<std::vector<int>>& diag, int nrow, int ncol) {
-  // TODO
-  return 0;
+  // TODID
+  vector<vector<int>> dp(nrow);
+  for(auto & i : dp){
+    i.resize(ncol);
+  }
+  //Initialize the leftmost column with the initial values
+  for(size_t i = 0; i < dp.size(); ++i){
+    dp[i][0] = diag[i][0];
+  }
 }
